@@ -1,0 +1,12 @@
+<html ng-app ng-init="valor1 = 8; valor2 = 10; pessoa = { nome: 'Helder Lima', idade: '30'}";>
+<head>
+	<title>Curso AngularJS</title>
+	<script src="js/angular/angular.min.js"></script>
+</head>
+<body>
+	<h1 ng-bind="valor1"></h1>
+	<h1>Seja bem vindo {{pessoa.nome}}</h1>
+	<h1 ng-bind="pessoa.nome"></h1>
+	<input type="text" ng-model="pessoa.nome">
+</body>
+</html>

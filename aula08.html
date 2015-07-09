@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+    <style>
+        input.ng-invalid.ng-touched {
+            background: red;
+        }
+        input.ng-valid.ng-touched {
+            background: green;
+        }
+    </style>
+
+    <meta charset="UTF-8">
+    <title>Curso AngulaJS Devmedia</title>
+</head>
+<body>
+    <div ng-controller="aula08Controller">
+        <form novalidate ng-submit="salvarPessoa(pessoa)">
+            <p>Nome: <input type="text" ng-model="pessoa.nome"  required></p>
+            <p>Email: <input type="email" ng-model="pessoa.email" required></p>
+            <p>Sexo:
+                <input type="radio" value="m" ng-model="pessoa.sexo"> Masculino
+                <input type="radio" value="f" ng-model="pessoa.sexo"> Feminino
+            </p>
+            <p>
+                <input type="submit" value="Salvar">
+                <input type="button" value="Resetar">
+            </p>
+            <p>Estados:
+                <select ng-model="pessoa.estado">
+                    <option ng-repeat="estado in estados" ng-selected="estado==pessoa.estado value="{{ estado }}">{{ estado }}</option>
+                </select>
+            </p>
+
+
+        <pre>
+            {{ pessoa | json}}
+
+        </pre>
+            <pre>
+                {{ pessoas | json }}
+            </pre>
+
+        </form>
+    </div>
+    <script src="js/angular/angular.min.js"></script>
+    <script src="js/app.module.js"></script>
+
+    <!-- Controllers -->
+    <script src="js/aula08Controller.js"></script>
+</body>
+</html>

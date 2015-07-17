@@ -1,52 +1,70 @@
 <!DOCTYPE html>
 <html ng-app="app">
-<head lang="en">
+<head>
+    <title>Curso AngularJS - Devmedia</title>
+    <meta charset="utf-8">
+
     <style>
         input.ng-invalid.ng-touched {
             background: red;
         }
+
         input.ng-valid.ng-touched {
             background: green;
         }
     </style>
 
-    <meta charset="UTF-8">
-    <title>Curso AngulaJS Devmedia</title>
 </head>
-<body>
-    <div ng-controller="aula08Controller">
-        <form novalidate ng-submit="salvarPessoa(pessoa)">
-            <p>Nome: <input type="text" ng-model="pessoa.nome"  required></p>
-            <p>Email: <input type="email" ng-model="pessoa.email" required></p>
-            <p>Sexo:
-                <input type="radio" value="m" ng-model="pessoa.sexo"> Masculino
-                <input type="radio" value="f" ng-model="pessoa.sexo"> Feminino
-            </p>
-            <p>
-                <input type="submit" value="Salvar">
-                <input type="button" value="Resetar">
-            </p>
-            <p>Estados:
-                <select ng-model="pessoa.estado">
-                    <option ng-repeat="estado in estados" ng-selected="estado==pessoa.estado value="{{ estado }}">{{ estado }}</option>
-                </select>
-            </p>
+<body ng-controller="aula08Controller">
 
+    <form name="frm" novalidate ng-submit="salvarPessoa(pessoa)">
+        <p>
+            <label for="nome">Nome</label>
+            <input name="nome" type="text" id="nome" required ng-model="pessoa.nome" >     
+            <div ng-show="frm.$submitted || frm.nome.$touched">
+                <div ng-show="frm.nome.$error.required">
+                    O campo nome deve ser preenchido!
+                </div>
+            </div>
+
+        </p>
+        <p>
+            <label for="email">Email</label>
+            <input name="email" type="email" id="email" required ng-model="pessoa.email">     
+            <div ng-show="frm.$submitted || frm.email.$touched ">
+                <div ng-show="frm.email.$error.required">
+                    O campo email deve ser preenchido!                    
+                </div>
+            </div>
+        </p>
+        <p>
+            <label for="Sexo">Sexo</label>
+            <input type="radio" value="m" ng-model="pessoa.sexo"> Masculino
+            <input type="radio" value="f" ng-model="pessoa.sexo" > Feminino     
+        </p>
+        <p> 
+            <label for="estado" >Estado</label>
+            <select id="estado" ng-model="pessoa.estado">
+                <option ng-repeat="estado in estados" value="{{estado}}" ng-selected="estado==pessoa.estado">{{ estado }}</option>
+            </select>
+        </p>
+        <p>
+            <input type="submit" value="Salvar" ng-disabled="frm.$invalid">
+        </p>
 
         <pre>
-            {{ pessoa | json}}
-
+            {{ pessoa | json }}
         </pre>
-            <pre>
-                {{ pessoas | json }}
-            </pre>
+        <pre>
+            {{ pessoas | json }}
+        </pre> 
 
-        </form>
-    </div>
+    </form>
+
+
     <script src="js/angular/angular.min.js"></script>
     <script src="js/app.module.js"></script>
-
-    <!-- Controllers -->
+    <!-- Controller -->
     <script src="js/aula08Controller.js"></script>
 </body>
 </html>

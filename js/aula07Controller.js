@@ -1,35 +1,43 @@
-app.controller("aula07Controller", function($scope){
+app.controller("aula07Controller", function ($scope) {
+	
 
-    $scope.nomes = ['Helder', 'Ricardo', 'Elane', 'Gregório'];
-    $scope.pessoas = [];
+	$scope.nomes = ['Helder', 'Creusa', 'Ricardo', 'Luciana']
 
-    $scope.pessoas.push(
-        {nome: "Helder Lima", idade: 31, status: false}
-    );
-    $scope.pessoas.push(
-        {nome: "Denize Urbado", idade: 26, status: true}
-    );
-    $scope.pessoas.push(
-        {nome: "Thiago Colares", idade: 25, status: false}
-    );
-    $scope.pessoas.push(
-        {nome: "Ricardo Queiroz", idade: 54, status: false}
-    );
-    $scope.pessoas.push(
-        {nome: "Luciana", idade: 31, status: false}
-    );
+	$scope.pessoas = [];
 
-    $scope.addPessoa = function(){
-        var nome = document.getElementById("nomePessoa");
-        var idade = document.getElementById("idadePessoa");
+	$scope.pessoas.push({
+		nome: "Helder Lima",
+		idade: 30,
+		status: false,
+	});
 
-        $scope.pessoas.push(
-            {nome: nome.value, idade: idade.value, status: false}
-        );
+	$scope.pessoas.push({
+		nome: "Ricardo Queiroz",
+		idade: 30,
+		status: false,
+	});
 
-        nome.value = "";
-        idade.value = "";
+	$scope.pessoas.push({
+		nome: "Creusa França",
+		idade: 30,
+		status: false,
+	});	
 
-    }
-    console.log($scope.pessoas);
+
+	console.log($scope.pessoas);
+
+	$scope.adicionarPessoa = function(){
+		var nome = document.getElementById('nomePessoa');
+		var idade = document.getElementById('idadePessoa');
+
+		$scope.pessoas.push({
+			nome: nome.value,
+			idade: idade.value,
+
+		});
+
+		nome.value = "";
+		idade.value = "";
+
+	}
 });
